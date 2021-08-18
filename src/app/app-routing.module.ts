@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path  : "home",
     component : ProgramSelectionComponent
+  },
+  {
+    path  : "",
+    component : ProgramSelectionComponent
   }
 ];
 
