@@ -1,0 +1,14 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-sidenav {
+  width: 230px;
+  top: 64px!important;
+  bottom: 0px;
+  transform: none;
+  visibility: visible;
+}
+.mat-drawer.mat-drawer-side {
+  z-index: 2;
+}

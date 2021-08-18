@@ -1,0 +1,63 @@
+.feature-block {
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  height: 160px;
+  background: #fff;
+  box-shadow: 0 22px 34px -10px rgb(0 0 0 / 20%);
+  font-size: 18px;
+  color: #313642;
+  letter-spacing: -0.25px;
+  text-align: center;
+  margin: 0 0 30px;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-grid-column-align: center;
+  justify-items: center;
+  cursor: pointer;
+  border-radius: 30px;
+}
+
+.feature-block:hover {
+  animation-name: feature-hover;
+  animation-duration: 3s;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  background-color: #2b383f;
+  color: #F4AA5B;
+}
+
+
+
+@keyframes feature-hover {
+  from {
+    background-color: #fff;
+    color: #313642;
+  }
+  to {
+    background-color: #2b383f;
+    color: #F4AA5B;
+    transform: scale(1.1);
+  }
+}
+
+.features {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 10%;
+}
+
+.layout{
+  width: 100%;
+  height: 700px;
+  //margin: 30px;
+  top: 0;
+  left: 0;
+  z-index: 999;
+
+
+}
