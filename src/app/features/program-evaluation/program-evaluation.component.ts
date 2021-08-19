@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-program-evaluation',
@@ -7,9 +8,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgramEvaluationComponent implements OnInit {
 
-  constructor() { }
+  evaluationForm ;
+
+  constructor(private _fb : FormBuilder) { }
 
   ngOnInit(): void {
+    this.initForm();
+  }
+
+  initForm() : void {
+    this.evaluationForm = this._fb.group({
+      infosPersonellesGroup : this._fb.group({
+        cin : ['', Validators.required],
+        nom : ['', Validators.required],
+        prenom : ['', Validators.required],
+        dateNaissance : ['', Validators.required],
+        lieuNaissance : ['', Validators.required],
+      }),
+      etatCivilGroup : this._fb.group({
+        nec : ['', Validators.required],
+        situationFamilliale : ['', Validators.required],
+      })
+    })
+  }
+
+  submit() : void {
+
   }
 
 }

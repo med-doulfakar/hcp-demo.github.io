@@ -7,6 +7,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './core/modules/angular-material/angular-material.module';
 import { ProgramSelectionComponent } from './features/program-selection/program-selection.component';
 import { ProgramEvaluationComponent } from './features/program-evaluation/program-evaluation.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { ProgramEvaluationComponent } from './features/program-evaluation/progra
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

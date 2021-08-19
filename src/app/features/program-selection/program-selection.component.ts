@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ProgramEvaluationComponent } from '../program-evaluation/program-evaluation.component';
 
 @Component({
   selector: 'app-program-selection',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgramSelectionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog : MatDialog) { }
 
   programs = [
     {
@@ -33,6 +35,13 @@ export class ProgramSelectionComponent implements OnInit {
   ]
 
   ngOnInit(): void {
+  }
+
+  ProgramEvaluation() {
+
+    this.dialog.open(ProgramEvaluationComponent, {
+      data : null
+    })
   }
 
 }

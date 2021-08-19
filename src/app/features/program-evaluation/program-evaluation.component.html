@@ -1,1 +1,78 @@
-<p>program-evaluation works!</p>
+<h1 mat-dialog-title>Evaluation RAMED</h1>
+
+<div  mat-dialog-content>
+  <mat-stepper [linear]="true" #stepper>
+    <form (ngSubmit)="submit()" [formGroup]="evaluationForm">
+    <mat-step [stepControl]="evaluationForm['controls'].infosPersonellesGroup">
+        <ng-template matStepLabel>Informations personelles</ng-template>
+        <mat-form-field appearance="outline">
+          <mat-label>CIN</mat-label>
+          <input matInput placeholder="Numéro CIN" formControlName="cin" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Nom</mat-label>
+          <input matInput placeholder="Nom" formControlName="nom" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Prénom</mat-label>
+          <input matInput placeholder="Prénom" formControlName="prenom" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Date de naissance</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="BirthdayDate"
+                  (focus)="BirthdayDate.open()"
+                  placeholder="Date de naissance"
+                  formControlName="dateNaissace"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="BirthdayDate"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #BirthdayDate></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Lieu de naissance</mat-label>
+          <input matInput placeholder="Lieu de naissance" formControlName="lieuNaissance" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+
+    </mat-step>
+    <mat-step [stepControl]="evaluationForm['controls'].etatCivilGroup" label="Etat Civil">
+        <mat-form-field appearance="outline">
+          <mat-label>Numéro Etat Civil</mat-label>
+          <input matInput formControlName="nec" placeholder="Numéro Etat Civil"
+                 required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Situation Familliale</mat-label>
+          <mat-select formControlName="situationFamilliale">
+            <mat-option value="Male"> Male </mat-option>
+            <mat-option value="Female"> Female </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+
+  </form>
+  </mat-stepper>
+</div>
