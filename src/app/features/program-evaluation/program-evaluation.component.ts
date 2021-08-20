@@ -1,54 +1,54 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-program-evaluation',
   templateUrl: './program-evaluation.component.html',
-  styleUrls: ['./program-evaluation.component.scss']
+  styleUrls: ['./program-evaluation.component.scss'],
 })
 export class ProgramEvaluationComponent implements OnInit {
+  evaluationForm;
+  isLinear = false;
 
-  evaluationForm ;
-  isLinear= false
-
-  constructor(private _fb : FormBuilder) { }
+  constructor(
+    private _fb: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
   }
 
-  initForm() : void {
+  initForm(): void {
     this.evaluationForm = this._fb.group({
-      infosPersonellesGroup : this._fb.group({
-        cin : ['', Validators.required],
-        nom : ['', Validators.required],
-        prenom : ['', Validators.required],
-        dateNaissance : ['', Validators.required],
-        lieuNaissance : ['', Validators.required],
+      infosPersonellesGroup: this._fb.group({
+        cin: [''],
+        nom: [''],
+        prenom: [''],
+        dateNaissance: [''],
+        lieuNaissance: [''],
       }),
-      etatCivilGroup : this._fb.group({
-        nec : ['', Validators.required],
-        situationFamilliale : ['', Validators.required],
+      etatCivilGroup: this._fb.group({
+        nec: [''],
+        situationFamilliale: [''],
       }),
-      questionnaire1 : this._fb.group({
-        variable1 : ['', Validators.required],
-        variable2 : ['', Validators.required],
-        variable3 : ['', Validators.required],
-        variable4 : ['', Validators.required],
-        variable5 : ['', Validators.required],
+      questionnaire1: this._fb.group({
+        variable1: [''],
+        variable2: [''],
+        variable3: [''],
+        variable4: [''],
+        variable5: [''],
       }),
-      questionnaire2 : this._fb.group({
-        variable1 : ['', Validators.required],
-        variable2 : ['', Validators.required],
-        variable3 : ['', Validators.required],
-        variable4 : ['', Validators.required],
-        variable5 : ['', Validators.required],
-      })
-    })
+      questionnaire2: this._fb.group({
+        variable1: [''],
+        variable2: [''],
+        variable3: [''],
+        variable4: [''],
+        variable5: [''],
+      }),
+    });
   }
 
-  submit() : void {
-
-  }
-
+  submit(): void {}
 }

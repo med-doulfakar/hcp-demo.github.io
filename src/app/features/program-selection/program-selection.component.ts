@@ -37,13 +37,13 @@ export class ProgramSelectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ProgramEvaluation() {
+  ProgramEvaluation(program  : string) {
 
     this.dialog.open(ProgramEvaluationComponent, {
-      data : null,
+      data : program,
       width : "80%",
       autoFocus : true,
-      disableClose : true
+      //disableClose : true
     })
   }
 
