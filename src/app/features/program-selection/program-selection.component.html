@@ -1,12 +1,20 @@
 <div class="layout">
+  <div class="description-block">
+    <span>HCP Program Evaluation</span>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
+      quidem accusantium temporibus nemo eligendi assumenda ipsam fugiat eum
+      dolorum? Iusto id vel quos obcaecati! Eum numquam deleniti tenetur
+      dignissimos laborum!
+    </p>
+  </div>
   <div class="features">
     <div class="row">
-      <div class="col"  *ngFor="let p of programs" (click)="ProgramEvaluation()">
+      <div class="col" *ngFor="let p of programs" (click)="ProgramEvaluation()">
         <div class="feature-block">
-          <h3>{{p.title}}</h3>
+          <h3>{{ p.title }}</h3>
         </div>
       </div>
     </div>
   </div>
-
 </div>

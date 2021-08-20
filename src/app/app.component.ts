@@ -55,19 +55,31 @@ interface MenuNode {
 
 const TREE_DATA: MenuNode[] = [
   {
-    name: 'Fruit',
-    children: [{ name: 'Apple' }, { name: 'Banana' }, { name: 'Fruit loops' }],
+    name: 'Home',
+    children: [],
   },
   {
-    name: 'Vegetables',
+    name: 'Programmes',
     children: [
       {
-        name: 'Green',
-        children: [{ name: 'Broccoli' }, { name: 'Brussels sprouts' }],
+        name: 'RAMED',
+        children: [],
       },
       {
-        name: 'Orange',
-        children: [{ name: 'Pumpkins' }, { name: 'Carrots' }],
+        name: 'DAAM',
+        children: [],
+      },
+      {
+        name: 'TAYSSIR',
+        children: [],
+      },
+      {
+        name: 'Aides Scolaires',
+        children: [],
+      },
+      {
+        name: 'Aides aux veuves',
+        children: [],
       },
     ],
   },
