@@ -24,11 +24,11 @@ export class ProgramEvaluationComponent implements OnInit {
   initForm(): void {
     this.evaluationForm = this._fb.group({
       infosPersonellesGroup: this._fb.group({
-        cin: [''],
-        nom: [''],
-        prenom: [''],
-        dateNaissance: [''],
-        lieuNaissance: [''],
+        cin: ['' , [Validators.required]],
+        nom: ['', [Validators.required]],
+        prenom: ['', [Validators.required]],
+        dateNaissance: ['', [Validators.required]],
+        lieuNaissance: ['', [Validators.required]],
       }),
       etatCivilGroup: this._fb.group({
         nec: [''],
@@ -51,17 +51,16 @@ export class ProgramEvaluationComponent implements OnInit {
     });
   }
 
-  score ;
-  getScore() : number {
+  score;
+  getScore(): number {
     return Math.floor(Math.random() * (100 - 0) + 0);
   }
 
   submit(): void {
-    this.isCalculating = true
+    this.isCalculating = true;
     setTimeout(() => {
-      this.isCalculating = false
+      this.isCalculating = false;
       this.score = this.getScore();
-
-    },8000)
+    }, 8000);
   }
 }
