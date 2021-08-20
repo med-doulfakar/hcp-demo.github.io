@@ -40,7 +40,10 @@ export class ProgramSelectionComponent implements OnInit {
   ProgramEvaluation() {
 
     this.dialog.open(ProgramEvaluationComponent, {
-      data : null
+      data : null,
+      width : "80%",
+      autoFocus : true,
+      disableClose : true
     })
   }
 

@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ProgramEvaluationComponent implements OnInit {
 
   evaluationForm ;
+  isLinear= false
 
   constructor(private _fb : FormBuilder) { }
 
@@ -28,6 +29,20 @@ export class ProgramEvaluationComponent implements OnInit {
       etatCivilGroup : this._fb.group({
         nec : ['', Validators.required],
         situationFamilliale : ['', Validators.required],
+      }),
+      questionnaire1 : this._fb.group({
+        variable1 : ['', Validators.required],
+        variable2 : ['', Validators.required],
+        variable3 : ['', Validators.required],
+        variable4 : ['', Validators.required],
+        variable5 : ['', Validators.required],
+      }),
+      questionnaire2 : this._fb.group({
+        variable1 : ['', Validators.required],
+        variable2 : ['', Validators.required],
+        variable3 : ['', Validators.required],
+        variable4 : ['', Validators.required],
+        variable5 : ['', Validators.required],
       })
     })
   }

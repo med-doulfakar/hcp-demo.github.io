@@ -1,78 +1,278 @@
 <h1 mat-dialog-title>Evaluation RAMED</h1>
 
-<div  mat-dialog-content>
-  <mat-stepper [linear]="true" #stepper>
+<div class="container-fluid" mat-dialog-content>
+  <mat-stepper [linear]="isLinear" #stepper>
     <form (ngSubmit)="submit()" [formGroup]="evaluationForm">
-    <mat-step [stepControl]="evaluationForm['controls'].infosPersonellesGroup">
+      <mat-step
+        [stepControl]="evaluationForm['controls'].infosPersonellesGroup"
+      >
         <ng-template matStepLabel>Informations personelles</ng-template>
-        <mat-form-field appearance="outline">
-          <mat-label>CIN</mat-label>
-          <input matInput placeholder="Numéro CIN" formControlName="cin" required>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Nom</mat-label>
-          <input matInput placeholder="Nom" formControlName="nom" required>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Prénom</mat-label>
-          <input matInput placeholder="Prénom" formControlName="prenom" required>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-          <mat-label>Date de naissance</mat-label>
+        <div formGroupName="infosPersonellesGroup">
+          <div class="row">
+            <div class="col-12">
+              <mat-form-field appearance="outline">
+                <mat-label>CIN</mat-label>
+                <input
+                  matInput
+                  placeholder="Numéro CIN"
+                  formControlName="cin"
+                  required
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field appearance="outline">
+                <mat-label>Nom</mat-label>
+                <input
+                  matInput
+                  placeholder="Nom"
+                  formControlName="nom"
+                  required
+                />
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field appearance="outline">
+                <mat-label>Prénom</mat-label>
+                <input
+                  matInput
+                  placeholder="Prénom"
+                  formControlName="prenom"
+                  required
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field appearance="outline">
+                <mat-label>Date de naissance</mat-label>
                 <input
                   matInput
                   [matDatepicker]="BirthdayDate"
                   (focus)="BirthdayDate.open()"
                   placeholder="Date de naissance"
-                  formControlName="dateNaissace"
+                  formControlName="dateNaissance"
                 />
                 <mat-datepicker-toggle
                   matSuffix
                   [for]="BirthdayDate"
                 ></mat-datepicker-toggle>
                 <mat-datepicker #BirthdayDate></mat-datepicker>
-        </mat-form-field>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field appearance="outline">
+                <mat-label>Lieu de naissance</mat-label>
+                <input
+                  matInput
+                  placeholder="Lieu de naissance"
+                  formControlName="lieuNaissance"
+                  required
+                />
+              </mat-form-field>
+            </div>
+          </div>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Lieu de naissance</mat-label>
-          <input matInput placeholder="Lieu de naissance" formControlName="lieuNaissance" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Next</button>
+          <mat-divider style="margin-bottom: 10px"></mat-divider>
+          <div mat-dialog-actions align="end">
+            <button
+              mat-raised-button
+              matStepperNext
+              color="primary"
+              type="button"
+            >
+              Suivant
+            </button>
+          </div>
         </div>
+      </mat-step>
+      <mat-step
+        [stepControl]="evaluationForm['controls'].etatCivilGroup"
+        label="Etat Civil"
+      >
+        <div formGroupName="etatCivilGroup">
+          <mat-form-field appearance="outline">
+            <mat-label>Numéro Etat Civil</mat-label>
+            <input
+              matInput
+              formControlName="nec"
+              placeholder="Numéro Etat Civil"
+              required
+            />
+          </mat-form-field>
 
-    </mat-step>
-    <mat-step [stepControl]="evaluationForm['controls'].etatCivilGroup" label="Etat Civil">
-        <mat-form-field appearance="outline">
-          <mat-label>Numéro Etat Civil</mat-label>
-          <input matInput formControlName="nec" placeholder="Numéro Etat Civil"
-                 required>
-        </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Situation Familliale</mat-label>
+            <mat-select formControlName="situationFamilliale">
+              <mat-option value="Male"> Male </mat-option>
+              <mat-option value="Female"> Female </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-divider style="margin-bottom: 10px"></mat-divider>
+          <div mat-dialog-actions align="end">
+            <button mat-raised-button matStepperPrevious>Back</button>
+            <button
+              mat-raised-button
+              matStepperNext
+              color="primary"
+              type="button"
+            >
+              Suivant
+            </button>
+          </div>
+        </div>
+      </mat-step>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Situation Familliale</mat-label>
-          <mat-select formControlName="situationFamilliale">
-            <mat-option value="Male"> Male </mat-option>
-            <mat-option value="Female"> Female </mat-option>
-          </mat-select>
-        </mat-form-field>
+      <mat-step
+        [stepControl]="evaluationForm['controls'].questionnaire1"
+        label="Premier Questionnaire"
+      >
+        <div formGroupName="questionnaire1">
+          <mat-form-field appearance="outline">
+            <mat-label>Variable 1</mat-label>
+            <input
+              matInput
+              formControlName="variable1"
+              placeholder="Variable 1"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Variable 2</mat-label>
+            <input
+              matInput
+              formControlName="variable1"
+              placeholder="Variable 1"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Variable 3</mat-label>
+            <input
+              matInput
+              formControlName="variable1"
+              placeholder="Variable 1"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Variable 4</mat-label>
+            <input
+              matInput
+              formControlName="variable1"
+              placeholder="Variable 1"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Variable 5</mat-label>
+            <input
+              matInput
+              formControlName="variable1"
+              placeholder="Variable 1"
+              required
+            />
+          </mat-form-field>
+
+          <mat-divider style="margin-bottom: 10px"></mat-divider>
+          <div mat-dialog-actions align="end">
+            <button mat-raised-button matStepperPrevious>Back</button>
+            <button
+              mat-raised-button
+              matStepperNext
+              color="primary"
+              type="button"
+            >
+              Suivant
+            </button>
+          </div>
+        </div>
+      </mat-step>
+
+      <mat-step
+        [stepControl]="evaluationForm['controls'].questionnaire2"
+        label="Deuxième Questionnaire"
+      >
+        <div formGroupName="questionnaire2">
+          <mat-form-field appearance="outline">
+            <mat-label>Variable 1</mat-label>
+            <input
+              matInput
+              formControlName="variable1"
+              placeholder="Variable 1"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Variable 2</mat-label>
+            <input
+              matInput
+              formControlName="variable1"
+              placeholder="Variable 1"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Variable 3</mat-label>
+            <input
+              matInput
+              formControlName="variable1"
+              placeholder="Variable 1"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Variable 4</mat-label>
+            <input
+              matInput
+              formControlName="variable1"
+              placeholder="Variable 1"
+              required
+            />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Variable 5</mat-label>
+            <input
+              matInput
+              formControlName="variable1"
+              placeholder="Variable 1"
+              required
+            />
+          </mat-form-field>
+
+          <mat-divider style="margin-bottom: 10px"></mat-divider>
+          <div mat-dialog-actions align="end">
+            <button mat-raised-button matStepperPrevious>Back</button>
+            <button
+              mat-raised-button
+              matStepperNext
+              color="primary"
+              type="button"
+            >
+              Suivant
+            </button>
+          </div>
+        </div>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
         </div>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-      </div>
-    </mat-step>
-
-  </form>
+      </mat-step>
+    </form>
   </mat-stepper>
 </div>
