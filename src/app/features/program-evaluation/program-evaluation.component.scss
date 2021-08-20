@@ -1,7 +1,27 @@
 mat-form-field {
-  width: 100%!important;
+  width: 100% !important;
 }
 
-.mat-stepper-previous{
+.mat-stepper-previous {
   margin-right: 10px;
+}
+
+.bd-callout {
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid #eee;
+  border-left-width: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.bd-callout-warning {
+  border-left-color: #f4aa5b;
+}
+
+.score {
+  font-family: "Montserrat";
+  font-size: 50px;
+  text-align: center;
+  margin-top: 70px;
 }

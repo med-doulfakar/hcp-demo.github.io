@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Evaluation {{data}}</h1>
+<h1 mat-dialog-title>Evaluation {{ data }}</h1>
 
 <div class="container-fluid" mat-dialog-content>
   <mat-stepper [linear]="isLinear" #stepper>
@@ -16,6 +16,7 @@
                   matInput
                   placeholder="Numéro CIN"
                   formControlName="cin"
+                  autocomplete="off"
                   required
                 />
               </mat-form-field>
@@ -125,7 +126,6 @@
           </div>
         </div>
       </mat-step>
-
       <mat-step
         [stepControl]="evaluationForm['controls'].questionnaire1"
         label="Premier Questionnaire"
@@ -195,7 +195,6 @@
           </div>
         </div>
       </mat-step>
-
       <mat-step
         [stepControl]="evaluationForm['controls'].questionnaire2"
         label="Deuxième Questionnaire"
@@ -266,11 +265,79 @@
         </div>
       </mat-step>
       <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        <p>You are now done.</p>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
+        <ng-template matStepLabel>Récap</ng-template>
+        <div class="row">
+          <div class="col">
+            <div class="bd-callout bd-callout-warning">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  CIN :
+                  <b>
+                    {{
+                      evaluationForm["controls"].infosPersonellesGroup.controls[
+                        "cin"
+                      ].value
+                    }}
+                  </b>
+                </li>
+                <li class="list-group-item">
+                  Nom Complet :
+                  <b>
+                    {{
+                      evaluationForm["controls"].infosPersonellesGroup.controls[
+                        "nom"
+                      ].value +
+                        " " +
+                        evaluationForm["controls"].infosPersonellesGroup
+                          .controls["prenom"].value
+                    }}
+                  </b>
+                </li>
+                <li class="list-group-item">
+                  Date de naissance :
+                  <b>
+                    {{
+                      evaluationForm["controls"].infosPersonellesGroup.controls[
+                        "dateNaissance"
+                      ].value
+                    }}
+                  </b>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col">
+            <div style="margin: 5% auto; text-align: center" *ngIf="isCalculating">
+              <mat-spinner style="margin: 10px auto;"></mat-spinner>
+              <span>Calculating score ...</span>
+            </div>
+            <div *ngIf="score">
+              <div class="score">
+                Score Total :
+                <br>
+                <br>
+                <br>
+                {{score}} / 100
+              </div>
+            </div>
+          </div>
+        </div>
+        <mat-divider style="margin-bottom: 10px"></mat-divider>
+        <div mat-dialog-actions align="end">
+          <button
+            mat-raised-button
+            style="background-color: #b52e31; margin-right: 10px; color: white"
+          >
+            Cancel
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            [type]="submit"
+            (click)="submit()"
+          >
+            <mat-icon>done</mat-icon>&nbsp; Calculate Score
+          </button>
         </div>
       </mat-step>
     </form>

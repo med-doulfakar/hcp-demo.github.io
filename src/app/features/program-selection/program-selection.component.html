@@ -1,16 +1,22 @@
-<div class="layout">
+<div class="layout" style="background-image: url('assets/imgs/home.png')">
   <div class="description-block">
-    <span>HCP Program Evaluation</span>
+    <span>Application de scoring pour ciblage des politiques publiques</span>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit
-      quidem accusantium temporibus nemo eligendi assumenda ipsam fugiat eum
-      dolorum? Iusto id vel quos obcaecati! Eum numquam deleniti tenetur
-      dignissimos laborum!
+      Cette application met en évidence la formule de scoring, qui permettra
+      l’identification des ménages éligibles aux différents programmes d’appui
+      social et d’aides directes. développée par le Haut-Commissariat au Plan
+      (HCP), en utilisant l’enquête-échantillon sur la consommation et les
+      dépenses des ménages pour ajuster les coefficients de la formule de
+      scoring sur un échantillon de 3.620 ménages.
     </p>
   </div>
   <div class="features">
     <div class="row">
-      <div class="col" *ngFor="let p of programs" (click)="ProgramEvaluation(p.title)">
+      <div
+        class="col"
+        *ngFor="let p of programs"
+        (click)="ProgramEvaluation(p.title)"
+      >
         <div class="feature-block">
           <h3>{{ p.title }}</h3>
         </div>

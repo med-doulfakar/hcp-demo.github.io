@@ -10,6 +10,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ProgramEvaluationComponent implements OnInit {
   evaluationForm;
   isLinear = false;
+  isCalculating = false;
 
   constructor(
     private _fb: FormBuilder,
@@ -50,5 +51,17 @@ export class ProgramEvaluationComponent implements OnInit {
     });
   }
 
-  submit(): void {}
+  score ;
+  getScore() : number {
+    return Math.floor(Math.random() * (100 - 0) + 0);
+  }
+
+  submit(): void {
+    this.isCalculating = true
+    setTimeout(() => {
+      this.isCalculating = false
+      this.score = this.getScore();
+
+    },8000)
+  }
 }
