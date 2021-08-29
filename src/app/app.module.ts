@@ -8,12 +8,16 @@ import { AngularMaterialModule } from './core/modules/angular-material/angular-m
 import { ProgramSelectionComponent } from './features/program-selection/program-selection.component';
 import { ProgramEvaluationComponent } from './features/program-evaluation/program-evaluation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DndDirective } from './core/directives/dnd.directive';
+import { ProgressComponent } from './core/components/progress/progress.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProgramSelectionComponent,
-    ProgramEvaluationComponent
+    ProgramEvaluationComponent,
+    DndDirective,
+    ProgressComponent
   ],
   imports: [
     BrowserModule,
